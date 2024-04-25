@@ -21,18 +21,26 @@ app.post('/create', async(req,res)=>{
     return res.send({data:response})
 })
 
-app.put("/update",async(req,res)=>{
-    const response = await eventModel.updateOne(req.body)
-    await response.save()
-    return res.json(response)
+app.put("/update/:id",async(req,res)=>{
+    const id = req.params.id
+    eventModel.findByIdAndUpdate({_id:id},{name:req.body.name,description:req.body.description,website:req.body.website,instagramLink:req.body.instagramLink,googleMapsLink:req.body.googleMapsLink,locality:req.body.locality,city:req.body.city,category:req.body.category})
+    .then(res=> res.json(res))
+    .catch(error=> res.json(error) )
 })
 
-app.delete('/delete',async(req,res)=>{
-    const query = {_id:req.params}
-    console.log(query)
-    const response = await eventModel.deleteOne(query)
-    await response.save()
-    return res.json()
+app.delete('/delete/:id',(req,res)=>{
+    const id = req.params.id
+    eventModel.findByIdAndDelete({_id : id})
+    .then(res=> res.json(res))
+    .catch(error=> res.json(error) )
+})
+
+app.get('/getuser/:id',(req,res)=>{
+    const id = req.params.id;
+    eventModel.findById({_id: id})
+    .then(user=> res.json(user))
+    .catch(error=> res.json(error) )
+
 })
 
 app.listen(3000,()=>{

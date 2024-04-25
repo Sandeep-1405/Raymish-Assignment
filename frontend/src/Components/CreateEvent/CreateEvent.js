@@ -34,9 +34,11 @@ function CreateEvent(){
     }
 
     return(
-        <div className="shadow h-100 m-5 p-5">
-            <h1>Create Event</h1>
-            <div >
+        <div className="shadow h-100 m-5 p-5 bg-primary">
+            
+            <div className="bg-light rounded m-md-5">
+                <h1 className="m-2">Create Event</h1>
+                <hr/>
                 <form onSubmit={onClickSubmit}>
 
                     <div className="m-3">
