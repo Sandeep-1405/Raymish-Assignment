@@ -43,13 +43,13 @@ function Home(){
     }
 
     return(
-        <div className='bg-primary h-100 p-3'>
+        <div className='bg-primary home-card p-5'>
             <h1 className='m-3 bg-light w-25 m-auto'>Events</h1>
             <div className='d-flex justify-content-around m-3'>
                 <Link to="/add-event" className='btn btn-success m-3'>+Add Event</Link>
                 <div className='d-flex '>
                     <p className='text-light m-3'>Filter By: </p>
-                    <select onChange={e=>(setfilter(e.target.value))}>
+                    <select onChange={e=>(setfilter(e.target.value))} className='select m-2'>
                         <option value="All">All</option>
                         <option value="Kids">Kids</option>
                         <option value="Sports">Sports</option>
@@ -63,7 +63,7 @@ function Home(){
                 </div>
             </div>
             
-            <div className='d-flex justify-content-center flex-wrap '>
+            <div className='d-flex justify-content-center flex-wrap p-5'>
                 {data.map(Details=>{
                     return <>
                     <div key={Details._id} className='shadow m-3 p-3 cards'>

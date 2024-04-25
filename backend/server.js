@@ -9,10 +9,14 @@ app.use(cors())
 
 connectDb();
 
+//Get details Api
+
 app.get('/',async(req,res)=>{
     const response = await eventModel.find()
     return res.json(response)
 })
+
+//Create Api
 
 app.post('/create', async(req,res)=>{
     const {name,description,website,instagramLink,googleMapsLink,locality,city,category} = req.body
@@ -21,12 +25,16 @@ app.post('/create', async(req,res)=>{
     return res.send({data:response})
 })
 
+//Update Api
+
 app.put("/update/:id",async(req,res)=>{
     const id = req.params.id
     eventModel.findByIdAndUpdate({_id:id},{name:req.body.name,description:req.body.description,website:req.body.website,instagramLink:req.body.instagramLink,googleMapsLink:req.body.googleMapsLink,locality:req.body.locality,city:req.body.city,category:req.body.category})
     .then(res=> res.json(res))
     .catch(error=> res.json(error) )
 })
+
+// Delete API
 
 app.delete('/delete/:id',(req,res)=>{
     const id = req.params.id
@@ -35,6 +43,8 @@ app.delete('/delete/:id',(req,res)=>{
     .catch(error=> res.json(error) )
 })
 
+// Get Details By ID
+
 app.get('/getuser/:id',(req,res)=>{
     const id = req.params.id;
     eventModel.findById({_id: id})
@@ -42,6 +52,8 @@ app.get('/getuser/:id',(req,res)=>{
     .catch(error=> res.json(error) )
 
 })
+
+// filter API
 
 app.get('/filtered-user/:input',(req,res)=>{
     const input = req.params.input
