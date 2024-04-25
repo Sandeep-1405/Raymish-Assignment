@@ -45,20 +45,22 @@ function Home(){
     return(
         <div className='bg-primary h-100 p-3'>
             <h1 className='m-3 bg-light w-25 m-auto'>Events</h1>
-            <Link to="/add-event" className='btn btn-success m-3'>+Add Event</Link>
-            <div className='d-flex m-auto justify-content-center'>
-                <p className='text-light m-3'>Filter By: </p>
-                <select onChange={e=>(setfilter(e.target.value))}>
-                    <option value="All">All</option>
-                    <option value="Kids">Kids</option>
-                    <option value="Sports">Sports</option>
-                    <option value="Family">Family</option>
-                    <option value="Nightlife">Nightlife</option>
-                    <option value="Workshop">Workshop</option>
-                    <option value="Meetups">Meetups</option>
-                    <option value="Dance">Dance</option>
-                    <option value="Music">Music</option>
-                </select>
+            <div className='d-flex justify-content-around m-3'>
+                <Link to="/add-event" className='btn btn-success m-3'>+Add Event</Link>
+                <div className='d-flex '>
+                    <p className='text-light m-3'>Filter By: </p>
+                    <select onChange={e=>(setfilter(e.target.value))}>
+                        <option value="All">All</option>
+                        <option value="Kids">Kids</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Family">Family</option>
+                        <option value="Nightlife">Nightlife</option>
+                        <option value="Workshop">Workshop</option>
+                        <option value="Meetups">Meetups</option>
+                        <option value="Dance">Dance</option>
+                        <option value="Music">Music</option>
+                    </select>
+                </div>
             </div>
             
             <div className='d-flex justify-content-center flex-wrap '>
