@@ -43,6 +43,14 @@ app.get('/getuser/:id',(req,res)=>{
 
 })
 
+app.get('/filtered-user/:input',(req,res)=>{
+    const input = req.params.input
+    //console.log(input)
+    eventModel.find({category:input})
+    .then(user=> res.json(user))
+    .catch(error=> res.json(error) )
+})
+
 app.listen(3000,()=>{
     console.log(`Server Running at http://localhost:3000/`)
 })
